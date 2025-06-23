@@ -32,3 +32,11 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### JavaScript and TypeScript gerados pelo vaadin ###
+*.js
+*.ts
+*.css
+*.map
+*.html
+*.tsx
