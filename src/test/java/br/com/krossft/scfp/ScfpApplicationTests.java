@@ -1,4 +1,4 @@
-package br.com.krossft.SCFP;
+package br.com.krossft.scfp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

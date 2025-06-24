@@ -3,7 +3,7 @@
  *
  */
 
-package br.com.krossft.SCFP.domain.enumerator;
+package br.com.krossft.scfp.domain.enumerator;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

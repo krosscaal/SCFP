@@ -1,18 +1,17 @@
 /*
  * Author: Krossby Adhemar Camacho Alviz
- * owned by Krossft.
+ *
  */
 
-package br.com.krossft.SCFP.domain.enumerator;
+package br.com.krossft.scfp.domain.enumerator;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-
 @AllArgsConstructor
 @Getter
-public enum EnumAtivo {
-    SIM("Sim"),
-    NAO("Não");
+public enum EnumRoleUsuario {
+    ADMIN("Administrador"),
+    BASICO("Básico");
 
     private final String descricao;
 

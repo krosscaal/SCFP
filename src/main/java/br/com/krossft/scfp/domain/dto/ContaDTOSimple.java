@@ -3,7 +3,7 @@
  * owned by Krossft.
  */
 
-package br.com.krossft.SCFP.domain.dto;
+package br.com.krossft.scfp.domain.dto;
 
 import lombok.Getter;
 import lombok.Setter;

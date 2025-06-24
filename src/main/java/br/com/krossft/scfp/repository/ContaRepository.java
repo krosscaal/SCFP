@@ -3,9 +3,9 @@
  *
  */
 
-package br.com.krossft.SCFP.repository;
+package br.com.krossft.scfp.repository;
 
-import br.com.krossft.SCFP.domain.entity.Conta;
+import br.com.krossft.scfp.domain.entity.Conta;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

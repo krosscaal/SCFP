@@ -3,9 +3,9 @@
  * owned by Krossft.
  */
 
-package br.com.krossft.SCFP.domain.entity;
+package br.com.krossft.scfp.domain.entity;
 
-import br.com.krossft.SCFP.domain.enumerator.EnumTipoConta;
+import br.com.krossft.scfp.domain.enumerator.EnumTipoConta;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

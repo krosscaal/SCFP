@@ -1,4 +1,4 @@
-package br.com.krossft.SCFP;
+package br.com.krossft.scfp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

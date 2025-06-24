@@ -3,7 +3,7 @@
  * owned by Krossft.
  */
 
-package br.com.krossft.SCFP.domain.entity;
+package br.com.krossft.scfp.domain.entity;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,7 +17,6 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.proxy.HibernateProxy;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 @MappedSuperclass

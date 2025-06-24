@@ -3,10 +3,10 @@
  * owned by Krossft.
  */
 
-package br.com.krossft.SCFP.domain.dto;
+package br.com.krossft.scfp.domain.dto;
 
-import br.com.krossft.SCFP.domain.entity.Usuario;
-import br.com.krossft.SCFP.domain.enumerator.EnumTipoConta;
+import br.com.krossft.scfp.domain.entity.Usuario;
+import br.com.krossft.scfp.domain.enumerator.EnumTipoConta;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;

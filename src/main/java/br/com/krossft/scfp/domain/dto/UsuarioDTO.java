@@ -3,9 +3,9 @@
  * owned by Krossft.
  */
 
-package br.com.krossft.SCFP.domain.dto;
+package br.com.krossft.scfp.domain.dto;
 
-import br.com.krossft.SCFP.domain.enumerator.EnumRoleUsuario;
+import br.com.krossft.scfp.domain.enumerator.EnumRoleUsuario;
 import lombok.Getter;
 import lombok.Setter;
 

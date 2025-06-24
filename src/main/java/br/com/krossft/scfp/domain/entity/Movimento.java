@@ -3,11 +3,11 @@
  * owned by Krossft.
  */
 
-package br.com.krossft.SCFP.domain.entity;
+package br.com.krossft.scfp.domain.entity;
 
-import br.com.krossft.SCFP.domain.enumerator.EnumAtivo;
-import br.com.krossft.SCFP.domain.enumerator.EnumMes;
-import br.com.krossft.SCFP.domain.enumerator.EnumStatusConta;
+import br.com.krossft.scfp.domain.enumerator.EnumAtivo;
+import br.com.krossft.scfp.domain.enumerator.EnumMes;
+import br.com.krossft.scfp.domain.enumerator.EnumStatusConta;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
