@@ -29,12 +29,12 @@ public class ContaResource extends ResourceBase<ContaDTO, Long>{
 
     @Override
     protected ResponseEntity<ContaDTO> acaObter(Long id) throws BusinessException {
-        return null;
+        return ResponseEntity.ok(contaService.buscarPorId(id));
     }
 
     @Override
     protected ResponseEntity<List<ContaDTO>> acaoListar() throws BusinessException {
-        return null;
+        return ResponseEntity.ok(contaService.listarContas());
     }
 
     @Override
@@ -44,12 +44,12 @@ public class ContaResource extends ResourceBase<ContaDTO, Long>{
 
     @Override
     protected ResponseEntity<ContaDTO> acaoAtualizar(ContaDTO dto) throws BusinessException {
-        return null;
+        return ResponseEntity.ok(contaService.atualizar(dto));
     }
 
     @Override
-    protected ResponseEntity<ContaDTO> acaoRemover(Long id) throws BusinessException {
-        return null;
+    protected void acaoRemover(Long id) throws BusinessException {
+        contaService.remover(id);
     }
 
     @Transactional

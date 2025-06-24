@@ -14,6 +14,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ContaDTO {
+
+    private Long id;
+
     @Size(min = 4, max = 100)
     private String nomeConta;
 

@@ -12,36 +12,41 @@ import br.com.krossft.scfp.domain.entity.Conta;
 import br.com.krossft.scfp.domain.entity.ContaFactory;
 import br.com.krossft.scfp.domain.entity.Usuario;
 import br.com.krossft.scfp.domain.mapper.ContaConverter;
+import br.com.krossft.scfp.exception.BusinessException;
 import br.com.krossft.scfp.repository.ContaRepository;
-import br.com.krossft.scfp.repository.UsuarioRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ContaService {
     private final ContaRepository repository;
-    private final UsuarioRepository usuarioRepository;
     private final ContaDtoAdapter contaDtoAdapter;
     private final ContaConverter contaConverter;
-    
-    public ContaService(ContaRepository repository, UsuarioRepository usuarioRepository, ContaDtoAdapter contaDtoAdapter, ContaConverter contaConverter) {
+    private final UsuarioService usuarioService;
+
+    public ContaService(ContaRepository repository, ContaDtoAdapter contaDtoAdapter, ContaConverter contaConverter, UsuarioService usuarioService) {
         this.repository = repository;
-        this.usuarioRepository = usuarioRepository;
         this.contaDtoAdapter = contaDtoAdapter;
         this.contaConverter = contaConverter;
+        this.usuarioService = usuarioService;
     }
 
 
     public ContaDTO criarContaAPartirDeContaDtoSimple(ContaDTOSimple contaDtoSimple) {
 
         ContaDTO contaDTO = contaDtoAdapter.converterParaContaDTO(contaDtoSimple);
-        Usuario usuario = usuarioRepository.findById(contaDTO.getUsuario().getId()).orElse(null);
+        Usuario usuario = usuarioService.buscarPorId(contaDTO.getUsuario().getId());
         contaDTO.setUsuario(usuario);
 
+        return persistirConta(contaDTO);
+
+    }
+    private ContaDTO persistirConta(ContaDTO contaDTO) {
         Conta conta = criarObjetoConta(contaDTO);
         Conta objetoContaPersistido = repository.save(conta);
-
         return contaConverter.toDTO(objetoContaPersistido);
-
     }
 
     private Conta criarObjetoConta(ContaDTO contaDTO) {
@@ -54,11 +59,37 @@ public class ContaService {
     }
 
     public ContaDTO criarContaAPartirDeContaDTO(ContaDTO contaDTO) {
-        Usuario usuario = usuarioRepository.findById(contaDTO.getUsuario().getId()).orElse(null);
+        Usuario usuario = usuarioService.buscarPorId(contaDTO.getUsuario().getId());
         contaDTO.setUsuario(usuario);
-        Conta conta = criarObjetoConta(contaDTO);
-        Conta objetoContaPersistido = repository.save(conta);
-        return contaConverter.toDTO(objetoContaPersistido);
+        return persistirConta(contaDTO);
     }
 
+    public List<ContaDTO> listarContas() {
+        List<Conta> lista = repository.findAll();
+        List<ContaDTO> listaContaDTO = new ArrayList<>();
+        lista.forEach(conta -> listaContaDTO.add(contaConverter.toDTO(conta)));
+        return listaContaDTO;
+    }
+
+    public ContaDTO buscarPorId(Long id) {
+        Conta conta = buscarContaPorId(id);
+        return contaConverter.toDTO(conta);
+    }
+
+    public ContaDTO atualizar(ContaDTO contaDTO) {
+        Usuario usuario = usuarioService.buscarPorId(contaDTO.getUsuario().getId());
+        contaDTO.setUsuario(usuario);
+        return persistirConta(contaDTO);
+
+    }
+    private Conta buscarContaPorId(Long id) {
+        return repository.findById(id).orElseThrow(() -> new BusinessException("Conta Inexistente"));
+    }
+
+    public void remover(Long id) {
+        Conta conta = buscarContaPorId(id);
+        if (conta != null) {
+            repository.deleteById(conta.getId());
+        }
+    }
 }

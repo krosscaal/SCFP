@@ -43,9 +43,9 @@ public abstract class ResourceBase<T, K> {
     }
     protected abstract ResponseEntity<T> acaoAtualizar(T dto) throws BusinessException;
 
-    @DeleteMapping(value = "/{id}", produces = {"application/json"})
-    public ResponseEntity<T> remover(@PathVariable("id") K id) throws BusinessException {
-        return this.acaoRemover(id);
+    @DeleteMapping(value = "/{id}")
+    public void remover(@PathVariable("id") K id) throws BusinessException {
+        this.acaoRemover(id);
     }
-    protected abstract ResponseEntity<T> acaoRemover(K id) throws BusinessException;
+    protected abstract void acaoRemover(K id) throws BusinessException;
 }
