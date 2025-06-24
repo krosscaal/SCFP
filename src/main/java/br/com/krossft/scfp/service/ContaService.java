@@ -58,7 +58,7 @@ public class ContaService {
         };
     }
 
-    public ContaDTO criarContaAPartirDeContaDTO(ContaDTO contaDTO) {
+    public ContaDTO criarAtualizarContaAPartirDeContaDTO(ContaDTO contaDTO) {
         Usuario usuario = usuarioService.buscarPorId(contaDTO.getUsuario().getId());
         contaDTO.setUsuario(usuario);
         return persistirConta(contaDTO);
@@ -76,8 +76,12 @@ public class ContaService {
         return contaConverter.toDTO(conta);
     }
 
-    public ContaDTO atualizar(ContaDTO contaDTO) {
+    public ContaDTO atualizar(Long id, ContaDTO contaDTO) {
+        if (!contaExists(id)) {
+            throw new BusinessException("Conta não existe");
+        }
         Usuario usuario = usuarioService.buscarPorId(contaDTO.getUsuario().getId());
+        contaDTO.setId(id);
         contaDTO.setUsuario(usuario);
         return persistirConta(contaDTO);
 
@@ -91,5 +95,8 @@ public class ContaService {
         if (conta != null) {
             repository.deleteById(conta.getId());
         }
+    }
+    private boolean contaExists(Long id) {
+        return repository.existsById(id);
     }
 }

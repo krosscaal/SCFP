@@ -37,11 +37,11 @@ public abstract class ResourceBase<T, K> {
     }
     protected abstract ResponseEntity<T> acaoIncluir(T dto) throws BusinessException;
 
-    @PutMapping(value = "/{id}", produces = {"application/json"})
+    @PutMapping(value = "/{id}")
     public ResponseEntity<T> atualizar(@PathVariable("id") K id, @RequestBody T dto) throws BusinessException {
-        return this.acaoAtualizar(dto);
+        return this.acaoAtualizar(id, dto);
     }
-    protected abstract ResponseEntity<T> acaoAtualizar(T dto) throws BusinessException;
+    protected abstract ResponseEntity<T> acaoAtualizar(K id, T dto) throws BusinessException;
 
     @DeleteMapping(value = "/{id}")
     public void remover(@PathVariable("id") K id) throws BusinessException {
