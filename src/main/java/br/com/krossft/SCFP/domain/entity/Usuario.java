@@ -13,6 +13,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
+
 @Entity
 @Table(name = "tb_usuario")
 public class Usuario extends EntidadeBase {

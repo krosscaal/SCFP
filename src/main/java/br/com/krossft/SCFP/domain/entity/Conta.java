@@ -35,4 +35,5 @@ public class Conta extends EntidadeBase {
 			foreignKey = @ForeignKey(name = "fk_conta_nome_id_usuario"))
 	private Usuario usuario;
 
+	protected Conta(){}
 }

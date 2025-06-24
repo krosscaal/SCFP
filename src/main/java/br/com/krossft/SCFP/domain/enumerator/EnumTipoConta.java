@@ -18,5 +18,13 @@ public enum EnumTipoConta {
     private final int ordinalConta;
     private final String descricaoConta;
 
+    public static EnumTipoConta fromOrdinal(int ordinal) {
+        for (EnumTipoConta tipo : EnumTipoConta.values()) {
+            if (tipo.getOrdinalConta() == ordinal) {
+                return tipo;
+            }
+        }
+        throw new IllegalArgumentException("Tipo de conta não encontrado para o ordinal: " + ordinal);
+    }
 
 }

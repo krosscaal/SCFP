@@ -11,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
+import jakarta.persistence.SequenceGenerator;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -19,15 +20,15 @@ import org.hibernate.proxy.HibernateProxy;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
+@MappedSuperclass
 @Getter
 @Setter
-@MappedSuperclass
-public abstract class EntidadeBase implements Serializable {
+public abstract class EntidadeBase {
 
-    private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "idgenerator")
+    @SequenceGenerator(name = "idgenerator", initialValue = 10)
     private Long id;
 
     @CreationTimestamp
