@@ -24,7 +24,6 @@ import java.util.Objects;
 @Setter
 public abstract class EntidadeBase {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "idgenerator")
     @SequenceGenerator(name = "idgenerator", initialValue = 10)
@@ -60,6 +59,4 @@ public abstract class EntidadeBase {
     public final int hashCode() {
         return this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode() : getClass().hashCode();
     }
-
-
 }
