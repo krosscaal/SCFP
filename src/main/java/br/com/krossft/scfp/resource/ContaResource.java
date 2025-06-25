@@ -53,7 +53,7 @@ public class ContaResource extends ResourceBase<ContaDTO, Long>{
     }
 
     @Transactional
-    @PostMapping
+    @PostMapping(value = "/simple")
     public ResponseEntity<ContaDTO> criarConta(@RequestBody ContaDTOSimple contaDtoSimple) {
         return ResponseEntity.ok(contaService.criarContaAPartirDeContaDtoSimple(contaDtoSimple));
     }
