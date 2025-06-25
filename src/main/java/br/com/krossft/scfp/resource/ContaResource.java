@@ -39,7 +39,7 @@ public class ContaResource extends ResourceBase<ContaDTO, Long>{
 
     @Override
     protected ResponseEntity<ContaDTO> acaoIncluir(ContaDTO dto) throws BusinessException {
-        return ResponseEntity.ok(contaService.criarAtualizarContaAPartirDeContaDTO(dto));
+        return ResponseEntity.ok(contaService.criarContaAPartirDeContaDTO(dto));
     }
 
     @Override

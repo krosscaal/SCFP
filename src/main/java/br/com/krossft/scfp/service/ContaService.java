@@ -58,7 +58,7 @@ public class ContaService {
         };
     }
 
-    public ContaDTO criarAtualizarContaAPartirDeContaDTO(ContaDTO contaDTO) {
+    public ContaDTO criarContaAPartirDeContaDTO(ContaDTO contaDTO) {
         Usuario usuario = usuarioService.buscarPorId(contaDTO.getUsuario().getId());
         contaDTO.setUsuario(usuario);
         return persistirConta(contaDTO);
@@ -83,7 +83,9 @@ public class ContaService {
         Usuario usuario = usuarioService.buscarPorId(contaDTO.getUsuario().getId());
         contaDTO.setId(id);
         contaDTO.setUsuario(usuario);
-        return persistirConta(contaDTO);
+        Conta conta = criarObjetoConta(contaDTO);
+        conta.setId(id);
+        return contaConverter.toDTO(repository.save(conta));
 
     }
     private Conta buscarContaPorId(Long id) {

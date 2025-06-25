@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 public abstract class ResourceBase<T, K> {
-    public ResourceBase() {}
+    protected ResourceBase() {}
 
     @GetMapping(value = "/{id}", produces = {"application/json"})
     public ResponseEntity<T> obter(@PathVariable("id") K id) throws BusinessException {

@@ -57,4 +57,6 @@ public class Movimento extends EntidadeBase{
             foreignKey = @ForeignKey(name = "fk_conta_movimento_id_conta_nome"))
     private Conta contaNome;
 
+    protected Movimento() {}
+
 }
