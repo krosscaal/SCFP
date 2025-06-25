@@ -7,15 +7,14 @@ package br.com.krossft.scfp.domain.entity;
 
 import br.com.krossft.scfp.domain.dto.ContaDTO;
 import br.com.krossft.scfp.domain.enumerator.EnumTipoConta;
-import br.com.krossft.scfp.domain.implementacoes.ContaDTOValidadorImpl;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ContaFactory {
 
-    private static final ContaDTOValidadorImpl contaDTOValidador = new ContaDTOValidadorImpl();
-    private ContaFactory(){}
-
     private static Conta criarConta(ContaDTO contaDTO) {
-        contaDTOValidador.validarContaDTO(contaDTO);
+        validarContaDto(contaDTO);
 
         Conta conta = new Conta();
         conta.setNomeConta(contaDTO.getNomeConta());
@@ -41,6 +40,20 @@ public class ContaFactory {
     }
     public static Conta criarContaCustomizada(ContaDTO contaDTO) {
         return criarConta(contaDTO);
+    }
+    private static void validarContaDto(ContaDTO contaDTO) {
+        if (contaDTO == null) {
+            throw new IllegalArgumentException("ContaDTO não pode ser nulo");
+        }
+        if (contaDTO.getNomeConta() == null || contaDTO.getNomeConta().trim().isEmpty()) {
+            throw new IllegalArgumentException("Nome da conta não pode ser nulo ou vazio");
+        }
+        if (contaDTO.getTipoConta() == null) {
+            throw new IllegalArgumentException("Tipo da conta não pode ser nulo");
+        }
+        if (contaDTO.getUsuario() == null || contaDTO.getUsuario().getId() == null) {
+            throw new IllegalArgumentException("Usuário não pode ser nulo");
+        }
     }
 }
 

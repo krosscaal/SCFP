@@ -9,13 +9,15 @@ import br.com.krossft.scfp.domain.dto.MovimentoDTO;
 import br.com.krossft.scfp.domain.enumerator.EnumAtivo;
 import br.com.krossft.scfp.domain.enumerator.EnumStatusConta;
 import br.com.krossft.scfp.domain.implementacoes.MovimentoDTOValidadorImpl;
+import br.com.krossft.scfp.domain.interfaces.MovimentoDTOValidador;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class MovimentoFactory {
 
-    private static final MovimentoDTOValidadorImpl movimentoDTOValidador = new MovimentoDTOValidadorImpl();
+    private static final MovimentoDTOValidador movimentoDTOValidador = new MovimentoDTOValidadorImpl();
+
     public static Movimento criarMovimento(MovimentoDTO dto) {
         movimentoDTOValidador.validarMovimentoDTO(dto);
 
